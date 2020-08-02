@@ -1,0 +1,70 @@
+# ml-finance
+Predicting Happiness Score by Country
+
+#Project Description
+This is a machine-learning project using Python that takes a world happiness dataset comprised of several variables by country and churns out a happiness score
+for a country of your choosing - it can be a real country or a made up country
+
+# Software needed:
+Latest version of Python (Anaconda ==> Juypter Notebook)
+You can download Anaconda here: https://www.anaconda.com/products/individual
+
+#Steps
+Once you have installed Anaconda/Python
+1) Download all three files 
+
+2) Import numpy, pandas, pyplot, seaborn, and scikit-learn
+
+3) Import the 'Happiness' file and ensure it imported correctly
+
+4) Get a look at the data using the describe function
+
+5) Remove target variable from the input variables using the drop function
+
+6) Since it's common to split data into test data and actual data - use 20% for test and 80% for the model using train_test_split that you imported at beginning
+
+7) Optional: Gets you an idea of what the data looks like by using type, length, and shape functions
+
+8) A) Import Lasso and Ridge regression algorithms 
+Lasso = Least Absolute Shrinkage and Selection Operator Regression: another version of Linear Regression but eliiminates the weights of least important features
+Ridge = another version of Linear Regression that forces the learning algorithm to not only fit the data but keep the model weights as small as possible
+B) Import make_pipeline: needed to process data properly
+C) Import StandardScaler: transforms your data so that its distribution will have a mean value of zero and a Standard Deviation of 1
+
+9) Create results variable by unpacking list - you can make sure this is done correctly by using input_train.head() and input_test.head() functions
+
+10) A) Import ElasticNet model from sci-kit learn: ElasticNet is the "Middle Ground" between Lasso and Ridge where you can control the mix ratio r (when 0, it = Ridge; when 1, it = Lasso)
+B) Add new dictionary item "enet" with the value equal to the standard scalar as the first argument, elasticnet as the second argument, 
+
+11) A) Import Random Forest Regressor: introduces extra randomness when growing deceision trees resulting in greater diversity trading a higher bias for lower variance
+B) Import Gradient Boosting Regressor: sequentially adds predictors to an ensemble, each one correcting its predecessor by fitting new predictor to residual errors of previous predictor
+C) Add two new items to pipeline dictionary (you can call these whatever), 
+
+12)  Make a for loop for the items in the pipeline to ensure they have been set up correctly (lasso, ridge, enet, rf, gb)
+
+13) Fine tune the hyperparameters by adding a list of values that you want to test for each hyperparameter (elasticnet, random forest, and gradient have multiple hyperparameters)
+
+14) Create one hyperparameter dictionary containing the five hyperparameter grids already created. This is to give you a single object you can use next
+
+15) Create a for loop with a nested if else statement to ensure the grids are working properly
+
+16) Next up: Cross-validate and score the five models by creating untrained models for each class, training and tuning each model, making and contrasting predictions
+
+17) Import GridSearchCV from ski-kit learn - this is to cross-validate your models. You want CV equal to 5 to get ample amount of cross-validation sets
+
+18) Create pipeline keys, which will cycle through all of the models (pipelines key, hyperparameter key, CV=5) then models.keys() to ensure the dictionary is correct
+
+19) Test the untrained lasso model using the fit function and the two arguments input_train and target_train
+
+20) Write a for loop to train the models using the fit function with same logic as 19)
+
+21) Import stat functions r2 and mean absolute error from ski-kit learn
+
+22) Write a for loop that takes each model's r2 and mae and derives the model with the best fit
+
+23) Using the results, visualize the model by first creating a prediction object (preds) for the winning model. Then, use the scatter function to plot on axes and label them accordingly
+
+24) Finally, import a worksheet in the same format as happiness (but without the target/response variable) and only one line. 
+    Then, run the model and it will predict the happiness score of the country or fictitious country you have in your worksheet. 
+    
+Thanks to several books (Mainly "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow") and websites on machine learning using python for guidance on the code. 
